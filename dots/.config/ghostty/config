@@ -1,0 +1,5 @@
+theme = GruvboxDark
+font-family = CaskaydiaCove Nerd Font Propo
+font-size = 14
+gtk-titlebar = true
+window-decoration = auto
