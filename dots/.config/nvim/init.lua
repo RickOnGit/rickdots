@@ -1,1 +1,1 @@
-require("rick")
+require("rick.config")
