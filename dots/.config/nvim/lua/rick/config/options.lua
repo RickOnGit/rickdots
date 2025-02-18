@@ -1,7 +1,6 @@
 -- NUMBER
 vim.opt.number = true
 vim.opt.relativenumber = true
-
 -- SYS clipboard
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
@@ -12,8 +11,8 @@ vim.opt.updatetime = 300
 vim.opt.signcolumn = "yes"
 
 -- TAB
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 
@@ -36,3 +35,5 @@ vim.opt.incsearch = true
 -- EXTRA
 vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.mouse = "a"
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1

@@ -1,3 +1,3 @@
-require("rick.config.remap")
-require("rick.config.options")
+require("rick.config.keymaps")
 require("rick.config.lazy")
+require("rick.config.options")
