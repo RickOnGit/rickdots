@@ -1,62 +1,56 @@
-
 return {
-  "kyazdani42/nvim-tree.lua",
-  dependencies = { "kyazdani42/nvim-web-devicons" },
+  "nvim-tree/nvim-tree.lua",
+  dependencies = "nvim-tree/nvim-web-devicons",
   config = function()
-    -- Impostazioni di base per nvim-tree
-    require("nvim-tree").setup({
-      disable_netrw       = true,
-      hijack_netrw        = true,
-      open_on_tab         = false,
-      update_focused_file = { enable = true, update_cwd = true },
+    local nvimtree = require("nvim-tree")
+
+    -- recommended settings from nvim-tree documentation
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
+    nvimtree.setup({
       view = {
-        width = 30,          -- Larghezza della finestra
-        side  = "left",      -- Posizionamento a sinistra
-        number = false,
-        relativenumber = false,
+        width = 35,
+        relativenumber = true,
       },
+      -- change folder arrow icons
       renderer = {
-        -- Abilita i marker di indentazione, per visualizzare "linee" simili all'output di tree
         indent_markers = {
           enable = true,
-          icons = {
-            corner = "└ ",  -- Angolo finale
-            edge   = "│ ",  -- Linea verticale
-            none   = "  ",  -- Spazio vuoto
-          },
         },
         icons = {
           glyphs = {
-            default = "",
-            symlink = "",
             folder = {
-              default = "",
-              open    = "",
-              empty   = "",
-              empty_open = "",
-              symlink = "",
-            },
-            git = {
-              unstaged = "✗",
-              staged   = "✓",
-              unmerged = "",
-              renamed  = "➜",
-              untracked = "★",
-              deleted  = "",
-              ignored  = "◌",
+              arrow_closed = "", -- arrow when folder is closed
+              arrow_open = "", -- arrow when folder is open
             },
           },
         },
       },
+      -- disable window_picker for
+      -- explorer to work well with
+      -- window splits
       actions = {
         open_file = {
-          quit_on_open = true,  -- Chiude nvim-tree quando apri un file
+          window_picker = {
+            enable = false,
+          },
         },
+      },
+      filters = {
+        custom = { ".DS_Store" },
+      },
+      git = {
+        ignore = false,
       },
     })
 
-    -- Imposta il colorscheme gruvbox (assicurati che il tema sia installato)
-    vim.cmd("colorscheme gruvbox")
-  end,
-}
+    -- set keymaps
+    local keymap = vim.keymap -- for conciseness
 
+    keymap.set("n", "<leader>ee", "<cmd>NvimTreeToggle<CR>", { desc = "Toggle file explorer" }) -- toggle file explorer
+    keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) -- toggle file explorer on current file
+    keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) -- collapse file explorer
+    keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) -- refresh file explorer
+  end
+}

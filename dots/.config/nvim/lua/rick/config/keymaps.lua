@@ -1,9 +1,3 @@
--- keymaps.lua
--- Configurazioni di keybindings per ottimizzare l'interattività in Neovim.
--- Assicurati di includere questo file nel tuo init.lua:
---   require('keymaps')
-
--- Imposta la leader key a "spazio"
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
@@ -49,9 +43,6 @@ vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", opts)
 vim.keymap.set('n', 'n', 'nzzzv', opts)
 vim.keymap.set('n', 'N', 'Nzzzv', opts)
 
--- Open nvim-tree
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>', opts)
-
 -- Terminale integrato: apri una split con terminale
 vim.keymap.set('n', '<leader>t', ':split | terminal<CR>', opts)
 vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], term_opts)
@@ -60,8 +51,11 @@ vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], term_opts)
 vim.keymap.set('n', '<leader>r', ':source $myvimrc<cr>', opts)
 
 -- nuovo buffer
+
 vim.keymap.set('n', '<leader>n', ':enew<cr>', opts)
 
--- Puoi aggiungere ulteriori keymaps qui in base alle tue necessità
 
-return {}
+-- 🔑 Keymap per aprire il greeter di alpha-nvim
+vim.keymap.set('n', '<leader>ga', function()
+  require('alpha').start(false)
+end, { desc = 'Apri Alpha Greeter' })

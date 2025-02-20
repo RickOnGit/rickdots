@@ -37,3 +37,4 @@ vim.opt.completeopt = { "menuone", "noselect" }
 vim.opt.mouse = "a"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.g.lazyvim_picker = "fzf"
