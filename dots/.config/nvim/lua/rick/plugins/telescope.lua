@@ -1,46 +1,36 @@
 return {
-  'nvim-telescope/telescope.nvim',
-  tag = '0.1.8',
-  dependencies = { 'nvim-lua/plenary.nvim' },
-  config = function()
-    local telescope = require('telescope')
-    local actions = require('telescope.actions')
+	"nvim-telescope/telescope.nvim",
+	branch = "0.1.x",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+		"nvim-tree/nvim-web-devicons",
+	},
+	config = function()
+		local telescope = require("telescope")
+		local actions = require("telescope.actions")
 
-    telescope.setup{
-      defaults = {
-        mappings = {
-          i = {
-            -- Modalità inserimento
-            ["<C-h>"] = "which_key",          -- Mostra i keybindings
-            ["<C-j>"] = actions.move_selection_next,    -- Sposta la selezione in basso
-            ["<C-k>"] = actions.move_selection_previous, -- Sposta la selezione in alto
-            ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist, -- Manda alla quickfix list
-          },
-          n = {
-            -- Modalità normale
-            ["q"] = actions.close,            -- Chiudi Telescope con 'q'
-          },
-        },
-      },
-      pickers = {
-        -- Configurazioni personalizzate per i pickers
-        find_files = {
-          theme = "dropdown",
-        },
-      },
-      extensions = {
-        -- Configurazioni per eventuali estensioni
-      },
-    }
+		telescope.setup({
+			defaults = {
+				path_display = { "smart" },
+				mappings = {
+					i = {
+						["<C-k>"] = actions.move_selection_previous, -- move to prev result
+						["<C-j>"] = actions.move_selection_next, -- move to next result
+						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+					},
+				},
+			},
+		})
 
-    -- 📜 Keybindings globali per richiamare Telescope rapidamente
-    local keymap = vim.keymap.set
-    local opts = { noremap = true, silent = true }
+		telescope.load_extension("fzf")
 
-    keymap('n', '<leader>ff', "<cmd>Telescope find_files<cr>", opts)  -- 🔍 Cerca file
-    keymap('n', '<leader>fg', "<cmd>Telescope live_grep<cr>", opts)   -- 🔎 Cerca testo nei file
-    keymap('n', '<leader>fb', "<cmd>Telescope buffers<cr>", opts)     -- 📂 Elenca buffer aperti
-    keymap('n', '<leader>fh', "<cmd>Telescope help_tags<cr>", opts)   -- ❓ Cerca nella documentazione di Neovim
-  end
+		-- set keymaps
+		local keymap = vim.keymap -- for conciseness
+
+		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
+	end,
 }
-

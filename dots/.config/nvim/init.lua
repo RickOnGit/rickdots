@@ -1,1 +1,2 @@
-require("rick.config")
+require("rick.core")
+require("rick.lazy")
