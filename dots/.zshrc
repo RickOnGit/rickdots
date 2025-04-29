@@ -8,6 +8,7 @@ fi
 export ZSH="$HOME/.oh-my-zsh"
 export PATH="$HOME/.cargo/bin:$PATH"
 export EZA_CONFIG_DIR="$HOME/.config/eza"
+export EDITOR=nvim
 
 plugins=(git
   zsh-autosuggestions
@@ -22,12 +23,17 @@ unset LS_COLORS
 alias ls='eza --color=always --icons'
 alias fastfetch='~/.config/fastfetch/nerdfetch.sh'
 
-fastfetch
+tmux(){
+  ans=$(gum input --header "Choose a session name")
+  /usr/bin/tmux new -s "$ans"
+}
 
 clear(){
 	command clear
 	fastfetch
 }
+
+fastfetch
 
 #eval "$(starship init zsh)"
 
@@ -43,3 +49,12 @@ export PATH=$JAVA_HOME/bin:$PATH
 
 
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=off
+
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
