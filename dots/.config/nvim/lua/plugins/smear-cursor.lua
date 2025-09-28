@@ -1,19 +1,15 @@
-return{
+return {
   "sphamba/smear-cursor.nvim",
   event = "VeryLazy",
-  cond = vim.g.neovide == nil,
+  cond = true, -- ← remove or change to allow in GUI
   opts = {
+    cursor_color = "#ff8800",
+    stiffness = 0.3,
+    trailing_stiffness = 0.1,
+    damping = 0.5,
+    trailing_exponent = 5,
+    never_draw_over_target = true,
     hide_target_hack = true,
-    cursor_color = "none",
-  },
-  specs = {
-    -- disable mini.animate cursor
-    {
-      "nvim-mini/mini.animate",
-      optional = true,
-      opts = {
-        cursor = { enable = false },
-      },
-    },
+    gamma = 1,
   },
 }
