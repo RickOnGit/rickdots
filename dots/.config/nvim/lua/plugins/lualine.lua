@@ -1,71 +1,71 @@
 return {
   "nvim-lualine/lualine.nvim",
-  config = function()
-    local lualine = require("lualine")
-    local lazy_status = require("lazy.status") -- to configure lazy pending updates count
-
-    vim.o.laststatus = 3
-
-    local colors = {
-      yellow   = "#ffdba8", -- keywords
-      green    = "#5f8787", -- strings
-      cyan     = "#8abeb7", -- numbers
-      fg       = "#c5c8c6", -- main text
-      gray     = "#969896", -- comments
-      bg       = "#0e0e0e", -- background
-      inactive_bg = "#1c1c1c", -- slightly lighter bg
-    }
-
-    local my_lualine_theme = {
-      normal = {
-        a = { bg = colors.gray, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      insert = {
-        a = { bg = colors.green, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      visual = {
-        a = { bg = colors.purple, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      command = {
-        a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      replace = {
-        a = { bg = colors.red, fg = colors.bg, gui = "bold" },
-        b = { bg = colors.bg, fg = colors.fg },
-        c = { bg = colors.bg, fg = colors.fg },
-      },
-      inactive = {
-        a = { bg = colors.inactive_bg, fg = colors.gray, gui = "bold" },
-        b = { bg = colors.inactive_bg, fg = colors.gray },
-        c = { bg = colors.inactive_bg, fg = colors.gray },
-      },
-    }
-
-    -- configure lualine with modified theme
-    lualine.setup({
-      options = {
-        theme = my_lualine_theme,
-      },
-      sections = {
-        lualine_x = {
-          {
-            lazy_status.updates,
-            cond = lazy_status.has_updates,
-            color = { fg = "#ff9e64" },
-          },
-          { "encoding" },
-          { "fileformat" },
-          { "filetype" },
-        },
-      },
-    })
-  end,
+  -- config = function()
+  --   local lualine = require("lualine")
+  --   local lazy_status = require("lazy.status") -- to configure lazy pending updates count
+  --
+  --   vim.o.laststatus = 3
+  --
+  --   local colors = {
+  --     yellow   = "#ffdba8", -- keywords
+  --     green    = "#5f8787", -- strings
+  --     cyan     = "#8abeb7", -- numbers
+  --     fg       = "#c5c8c6", -- main text
+  --     gray     = "#969896", -- comments
+  --     bg       = "#0e0e0e", -- background
+  --     inactive_bg = "#1c1c1c", -- slightly lighter bg
+  --   }
+  --
+  --   local my_lualine_theme = {
+  --     normal = {
+  --       a = { bg = colors.gray, fg = colors.bg, gui = "bold" },
+  --       b = { bg = colors.bg, fg = colors.fg },
+  --       c = { bg = colors.bg, fg = colors.fg },
+  --     },
+  --     insert = {
+  --       a = { bg = colors.green, fg = colors.bg, gui = "bold" },
+  --       b = { bg = colors.bg, fg = colors.fg },
+  --       c = { bg = colors.bg, fg = colors.fg },
+  --     },
+  --     visual = {
+  --       a = { bg = colors.purple, fg = colors.bg, gui = "bold" },
+  --       b = { bg = colors.bg, fg = colors.fg },
+  --       c = { bg = colors.bg, fg = colors.fg },
+  --     },
+  --     command = {
+  --       a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
+  --       b = { bg = colors.bg, fg = colors.fg },
+  --       c = { bg = colors.bg, fg = colors.fg },
+  --     },
+  --     replace = {
+  --       a = { bg = colors.red, fg = colors.bg, gui = "bold" },
+  --       b = { bg = colors.bg, fg = colors.fg },
+  --       c = { bg = colors.bg, fg = colors.fg },
+  --     },
+  --     inactive = {
+  --       a = { bg = colors.inactive_bg, fg = colors.gray, gui = "bold" },
+  --       b = { bg = colors.inactive_bg, fg = colors.gray },
+  --       c = { bg = colors.inactive_bg, fg = colors.gray },
+  --     },
+  --   }
+  --
+  --   -- configure lualine with modified theme
+  --   lualine.setup({
+  --     options = {
+  --       theme = my_lualine_theme,
+  --     },
+  --     sections = {
+  --       lualine_x = {
+  --         {
+  --           lazy_status.updates,
+  --           cond = lazy_status.has_updates,
+  --           color = { fg = "#ff9e64" },
+  --         },
+  --         { "encoding" },
+  --         { "fileformat" },
+  --         { "filetype" },
+  --       },
+  --     },
+  --   })
+  -- end,
 }

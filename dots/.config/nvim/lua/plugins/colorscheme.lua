@@ -58,6 +58,10 @@ return{
       --
       -- The following options allow for more control over some plugin appearances.
       plugin = {
+        lualine = {
+          bold = true,
+          plain = false,
+        },
         cmp = { -- works for nvim.cmp and blink.nvim
           -- Don't highlight lsp-kind items. Only the current selection will be highlighted.
           plain = false,
@@ -69,9 +73,12 @@ return{
       -- CUSTOM HIGHLIGHTS --
       --
       -- Override default colors
-      colors = {},
-      -- Override highlight groups
-      highlights = {},
+      colors = {
+        -- keyword = '#817faf', -- redefine an existing color
+      },
+      highlights = {
+        -- ["@keyword"] = { fg = "$keyword", fmt = 'bold' },
+      },
     })
     -- Convenience function that simply calls `:colorscheme <theme>` with the theme
     -- specified in your config.
