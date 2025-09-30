@@ -4,7 +4,7 @@ return {
   event = { "BufReadPre", "BufNewFile" },
   opts = {
     indent = {
-      char = "¦", -- This is the passive indent character
+      char = "|", -- This is the passive indent character
       highlight = "IndentBlanklineChar",
     },
     scope = {

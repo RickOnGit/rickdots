@@ -1,6 +1,8 @@
 theme = Black Metal (Bathory)
   font-family = CaskaydiaCove Nerd Font
-  font-size = 16
+  font-size = 14
   gtk-titlebar = false
-  cursor-opacity = 0.3
-  cursor-color = #505050 
+  cursor-opacity = 0.5
+  cursor-color = #8094B4
+  cursor-style = block
+  shell-integration-features = no-cursor
