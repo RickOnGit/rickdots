@@ -14,15 +14,16 @@
       ],
       "middle": [
         "media",
-        "clock"
+        "clock",
+        "custom/time",
+        "notifications"
       ],
       "right": [
         "volume",
         "network",
         "bluetooth",
         "battery",
-        "systray",
-        "notifications"
+        "systray"
       ]
     },
     "1": {
@@ -65,14 +66,14 @@
   "menus.dashboard.stats.enabled": false,
   "menus.dashboard.controls.enabled": false,
   "menus.dashboard.directories.enabled": false,
-  "theme.bar.menus.background": "#000000",
-  "theme.bar.background": "#000000",
+  "theme.bar.menus.background": "#11111b",
+  "theme.bar.background": "#111111",
   "theme.bar.buttons.media.icon": "#FFFFFF",
   "theme.bar.buttons.media.text": "#FFFFFF",
   "theme.bar.buttons.icon": "#FFFFFF",
   "theme.bar.buttons.text": "#FFFFFF",
   "theme.bar.buttons.hover": "#333333",
-  "theme.bar.buttons.background": "#1A1A1A",
+  "theme.bar.buttons.background": "#000000",
   "theme.bar.menus.text": "#CCCCCC",
   "theme.bar.menus.border.color": "#333333",
   "theme.bar.buttons.media.background": "#090909",
@@ -264,7 +265,7 @@
   "theme.bar.menus.label": "#FFFFFF",
   "theme.bar.menus.feinttext": "#444444",
   "theme.bar.menus.dimtext": "#CCCCCC",
-  "theme.bar.menus.cards": "#111111",
+  "theme.bar.menus.cards": "#000000",
   "theme.bar.buttons.notifications.total": "#FFFFFF",
   "theme.bar.buttons.notifications.icon": "#FFFFFF",
   "theme.bar.buttons.notifications.background": "#090909",
@@ -452,7 +453,7 @@
   "theme.bar.buttons.media.enableBorder": true,
   "bar.media.show_label": false,
   "bar.clock.showIcon": true,
-  "bar.clock.format": "%a %b %d  %I:%M %p",
+  "bar.clock.format": "%d/%m",
   "theme.bar.buttons.notifications.enableBorder": true,
   "bar.notifications.show_total": true,
   "bar.notifications.hideCountWhenZero": true,
@@ -472,5 +473,22 @@
   "bar.workspaces.monitorSpecific": true,
   "bar.launcher.autoDetectIcon": false,
   "theme.bar.buttons.dashboard.enableBorder": true,
-  "theme.bar.buttons.enableBorders": true
+  "theme.bar.buttons.enableBorders": true,
+  "notifications.position": "top right",
+  "notifications.showActionsOnHover": true,
+  "theme.bar.menus.menu.notifications.pager.show": false,
+  "theme.bar.menus.menu.notifications.scrollbar.width": "0.30em",
+  "theme.bar.menus.menu.notifications.height": "30em",
+  "theme.bar.buttons.modules.microphone.enableBorder": true,
+  "theme.osd.orientation": "vertical",
+  "theme.bar.border.location": "none",
+  "wallpaper.image": "/home/rick/Pictures/gruv_city.png",
+  "wallpaper.pywal": false,
+  "theme.bar.menus.monochrome": false,
+  "wallpaper.enable": false,
+  "tear": false,
+  "theme.bar.menus.menu.power.scaling": 100,
+  "theme.bar.menus.opacity": 100,
+  "menus.power.lowBatteryNotification": true,
+  "scalingPriority": "hyprland"
 }
