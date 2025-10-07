@@ -7,11 +7,6 @@ vim.opt.cursorline = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.wrap = true
-vim.opt.linebreak = true
-vim.opt.breakindent = true
-vim.opt.showbreak = "↪ "
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.ignorecase = true
@@ -22,3 +17,25 @@ vim.opt.showmode = false
 vim.opt.ruler = false
 vim.opt.showcmd = false
 vim.opt.cmdheight = 0
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "text", "gitcommit" },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
+		vim.opt_local.breakindent = true
+		vim.opt_local.breakindentopt = "shift:2"
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "json", "yaml" },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.linebreak = true
+		vim.opt_local.breakindent = true
+		vim.opt_local.breakindentopt = "shift:10"
+	end,
+})

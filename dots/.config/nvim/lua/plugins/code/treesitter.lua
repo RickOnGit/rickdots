@@ -44,6 +44,7 @@ return {
         "c",
         "sql",
         "kotlin",
+        "latex",
       },
       incremental_selection = {
         enable = true,
