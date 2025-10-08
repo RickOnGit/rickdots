@@ -20,22 +20,20 @@ vim.opt.cmdheight = 0
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
+
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "markdown", "text", "gitcommit" },
+	pattern = { "markdown", "text", "gitcommit", "sh", "bash" },
 	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.linebreak = true
-		vim.opt_local.breakindent = true
 		vim.opt_local.breakindentopt = "shift:2"
 	end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "json", "yaml" },
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.json",
 	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.linebreak = true
-		vim.opt_local.breakindent = true
-		vim.opt_local.breakindentopt = "shift:10"
+		vim.cmd([[%!jq .]])
 	end,
 })
